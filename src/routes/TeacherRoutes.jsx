@@ -1,6 +1,7 @@
+import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { TeacherLayout } from "../layouts/TeacherLayout";
+import TeacherLayout from "../layouts/TeacherLayout";
 
 
 import TeacherDashboard from "../teacher/Dashboard";
@@ -11,12 +12,12 @@ import StudentList from "../teacher/StudentList";
 import TeacherProfile from "../teacher/Profile";
 
 
-export const teacherRoutes = {
+export const TeacherRoutes = {
     path: "/teacher",
     element: (
-        <ProtectedAdminRoute>
+        <ProtectedTeacherRoute>
             <TeacherLayout />
-        </ProtectedAdminRoute>
+        </ProtectedTeacherRoute>
     ),    
     children: [
         { path:'', element: <TeacherDashboard /> },

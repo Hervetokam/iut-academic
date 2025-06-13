@@ -1,7 +1,11 @@
 import React from 'react'
 
-export const Schedule = () => {
+const Schedule = () => {
   return (
-    <div>Schedule</div>
+    <div>
+      
+    </div>
   )
 }
+
+export default Schedule

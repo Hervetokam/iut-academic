@@ -1,7 +1,11 @@
 import React from 'react'
 
-export const Support = () => {
+const Support = () => {
   return (
-    <div>Support</div>
+    <div>
+      
+    </div>
   )
 }
+
+export default Support

@@ -1,7 +1,11 @@
 import React from 'react'
 
-export const Announcements = () => {
+const Announcements = () => {
   return (
-    <div>Announcements</div>
+    <div>
+      
+    </div>
   )
 }
+
+export default Announcements

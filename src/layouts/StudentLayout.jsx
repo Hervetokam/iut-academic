@@ -1,7 +1,11 @@
 import React from 'react'
 
-export const StudentLayout = () => {
+const StudentLayout = () => {
   return (
-    <div>StudentLayout</div>
+    <div>
+      
+    </div>
   )
 }
+
+export default StudentLayout

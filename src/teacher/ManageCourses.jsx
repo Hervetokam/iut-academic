@@ -1,7 +1,11 @@
 import React from 'react'
 
-export const ManageCourses = () => {
+const ManageCourses = () => {
   return (
-    <div>ManageCourses</div>
+    <div>
+      
+    </div>
   )
 }
+
+export default ManageCourses

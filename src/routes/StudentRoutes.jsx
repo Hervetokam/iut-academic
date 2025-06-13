@@ -1,6 +1,7 @@
+import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { StudentLayout } from "../layouts/StudentLayout";
+import StudentLayout from "../layouts/StudentLayout";
 
 
 import StudentDashboard from "../student/Dashboard";
@@ -15,9 +16,9 @@ import Support from "../student/Profile";
 export const StudentRoutes = {
     path: "/student",
     element: (
-        <ProtectedAdminRoute>
+        <ProtectedStudentRoute>
             <StudentLayout />
-        </ProtectedAdminRoute>
+        </ProtectedStudentRoute>
     ),  
     children: [
         { path:'', element: <StudentDashboard /> },
@@ -30,7 +31,7 @@ export const StudentRoutes = {
     ],
 };
 
-function ProtectedTeacherRoute({ children }) {
+function ProtectedStudentRoute({ children }) {
     const { user } = useAuth();
     if (!user || user.role !=="student") return <Navigate to="/" />;
 }

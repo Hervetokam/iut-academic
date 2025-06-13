@@ -1,7 +1,11 @@
 import React from 'react'
 
-export const UploadCourse = () => {
+const UploadCourse = () => {
   return (
-    <div>UploadCourse</div>
+    <div>
+      
+    </div>
   )
 }
+
+export default UploadCourse

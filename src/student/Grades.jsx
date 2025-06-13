@@ -1,7 +1,11 @@
 import React from 'react'
 
-export const Grades = () => {
+const Grades = () => {
   return (
-    <div>Grades</div>
+    <div>
+      
+    </div>
   )
 }
+
+export default Grades
