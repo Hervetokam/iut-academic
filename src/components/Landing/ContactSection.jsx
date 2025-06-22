@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { delay, motion, useInView } from 'framer-motion'
 import { Mail, Phone, MapPin } from 'lucide-react'
 
 
@@ -7,6 +7,15 @@ const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
   exit: { opacity: 0, y: 50, transition: { duration: 0.5, ease: 'easeInOut' } },
+}
+
+const bounceTransition = {
+  type: 'spring',
+  stiffness: 300,
+  damping: 20,
+  duration: 0.2,
+  delay: 0.3,
+  
 }
 
 const ContactSection = () => {
@@ -27,9 +36,9 @@ const ContactSection = () => {
   return (
     <motion.div
       ref={contactRef}
-      initial='hidden'
-      animate={contactVisible ? 'visible' : 'exit'}
-      variants={sectionVariants}
+      initial={{ opacity: 0, x: -50, scaleY: 0 }}
+      animate={contactVisible ? { opacity: 1, x: 0, scaleY: 1 } : 'exit'}
+      transition={bounceTransition}
       className='max-w-5xl mx-auto mt-20 bg-neutral-100 backdrop-blur-lg shadow-xl border border-white/30 p-10 rounded-md'
     >
       <motion.h2

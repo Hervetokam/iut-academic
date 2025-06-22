@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
+
+
 import { motion } from 'framer-motion'
 
 import SelectRole from '../auth/SelectRole'
@@ -9,6 +11,14 @@ import AboutSection from '../components/Landing/AboutSection'
 import ContactSection from '../components/Landing/ContactSection'
 
 const LandingPage = () => {
+  useEffect(() => {
+    // if (localStorage.getItem('adminToken')) {
+    //   localStorage.removeItem('adminToken')
+    // }
+    localStorage.removeItem('adminToken')
+    sessionStorage.removeItem('allowCreatePassword')
+  }, [])
+  
   const numbers = ['1', '2', '3']
   const [index, setIndex] = useState(0)
   useEffect(() => {
@@ -17,6 +27,8 @@ const LandingPage = () => {
     }, 1500)
     return () => clearInterval(interval)
   }, [])
+
+ 
 
   return (
     <div className='flex flex-col min-h-screen bg-black'>

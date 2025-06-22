@@ -1,8 +1,6 @@
 import React from "react";
-import { Outlet, Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import TeacherLayout from "../layouts/TeacherLayout";
 
+import TeacherLayout from "../layouts/TeacherLayout";
 
 import TeacherDashboard from "../teacher/Dashboard";
 import UploadCourse from "../teacher/UploadCourse";
@@ -10,14 +8,15 @@ import ManageCourses from "../teacher/ManageCourses";
 import TeacherAnnoucements from "../teacher/Announcements";
 import StudentList from "../teacher/StudentList";
 import TeacherProfile from "../teacher/Profile";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 
 export const TeacherRoutes = {
     path: "/teacher",
     element: (
-        <ProtectedTeacherRoute>
+        <ProtectedRoute role="teacher">
             <TeacherLayout />
-        </ProtectedTeacherRoute>
+        </ProtectedRoute>
     ),    
     children: [
         { path:'', element: <TeacherDashboard /> },
@@ -29,8 +28,6 @@ export const TeacherRoutes = {
     ],
 };
 
-function ProtectedTeacherRoute({ children }) {
-    const { user } = useAuth();
-    if (!user || user.role !=="teacher") return <Navigate to="/" />;
-}
+
+
 

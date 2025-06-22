@@ -1,8 +1,6 @@
 import React from "react";
-import { Outlet, Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import StudentLayout from "../layouts/StudentLayout";
 
+import StudentLayout from "../layouts/StudentLayout";
 
 import StudentDashboard from "../student/Dashboard";
 import Courses from "../student/Courses";
@@ -10,18 +8,19 @@ import Grades from "../student/Grades";
 import Schedule from "../student/Schedule";
 import Annoucements from "../student/Announcements";
 import Profile from "../student/Profile";
-import Support from "../student/Profile";
+import Support from "../student/Support";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 
 export const StudentRoutes = {
     path: "/student",
     element: (
-        <ProtectedStudentRoute>
+        <ProtectedRoute role="student">
             <StudentLayout />
-        </ProtectedStudentRoute>
+        </ProtectedRoute>
     ),  
     children: [
-        { path:'', element: <StudentDashboard /> },
+        { path:'dashboard', element: <StudentDashboard /> },
         { path:'courses', element: <Courses /> },
         { path:'grades', element: <Grades /> },
         { path:'schedule', element: <Schedule /> },
@@ -31,7 +30,3 @@ export const StudentRoutes = {
     ],
 };
 
-function ProtectedStudentRoute({ children }) {
-    const { user } = useAuth();
-    if (!user || user.role !=="student") return <Navigate to="/" />;
-}

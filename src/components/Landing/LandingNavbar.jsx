@@ -7,7 +7,7 @@ const LandingNavbar = () => {
     stiffness: 300,
     damping: 20,
     duration: 2,
-    delay: 0.15,
+    delay: 0.8,
   }
 
   const bounceTransition2 = {
@@ -15,7 +15,7 @@ const LandingNavbar = () => {
     stiffness: 300,
     damping: 20,
     duration: 0.1,
-    delay: 0.25,
+    delay: 0.8,
   }
 
   const bounceTransition3 = {

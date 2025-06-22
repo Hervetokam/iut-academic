@@ -8,6 +8,22 @@ import {
   X,
 } from 'lucide-react'
 
+const bounceTransition = {
+  type: 'spring',
+  stiffness: 300,
+  damping: 20,
+  duration: 0.2,
+  delay: 0.15,
+}
+
+const BounceTransition2 = {
+  type: 'spring',
+  stiffness: 300,
+  damping: 20,
+  duration: 0.3,
+  delay: 0.15,
+}
+
 const cardVariants = {
   hidden: { opacity: 0, y: 60 },
   visible: {
@@ -53,9 +69,9 @@ const AboutSection = () => {
   const textRef = useRef(null)
   const cardsRef = useRef(null)
 
-  const titleInView = useInView(titleRef, { once: false, amount: 0.7 })
+  const titleInView = useInView(titleRef, { once: false, amount: 0.45 })
   const textInView = useInView(textRef, { once: false, amount: 0.4 })
-  const cardsInView = useInView(cardsRef, { once: false, amount: 0.5 })
+  const cardsInView = useInView(cardsRef, { once: false, amount: 0.6 })
 
   const [titleVisible, setTitleVisible] = useState(false)
   const [textVisible, setTextVisible] = useState(false)
@@ -95,9 +111,9 @@ const AboutSection = () => {
   return (
     <div ref={titleRef} className='flex flex-col justify-center items-center'>
       <motion.h2
-        initial='hidden'
-        animate={titleVisible ? 'visible' : 'exit'}
-        variants={h2Variant}
+        initial={{ opacity: 0, y: -50, scaleY: 0 }}
+        animate={titleVisible ? { opacity: 1, y: 0, scaleY: 1 } : 'exit'}
+        transition={BounceTransition2}
         className='text-white text-center font-[Inter] text-7xl mb-12 font-bold'
       >
         Pourquoi{' '}
@@ -108,9 +124,9 @@ const AboutSection = () => {
 
       <motion.h2
         ref={titleRef}
-        initial='hidden'
-        animate={titleVisible ? 'visible' : 'exit'}
-        variants={pVariant1}
+        initial={{ opacity: 0, y: -50, scaleY: 0 }}
+        animate={titleVisible ? { opacity: 1, y: 0, scaleY: 1 } : 'exit'}
+        transition={BounceTransition2}
         className='text-[20px] font-semibold text-center mb-3 tracking-tight bg-gradient-to-tr from-neutral-200 via-zinc-50 to-zinc-400 bg-clip-text text-transparent'
       >
         Améliore l'expérience académique pour tous.
@@ -118,9 +134,9 @@ const AboutSection = () => {
 
       <motion.p
         ref={titleRef}
-        initial='hidden'
-        animate={titleVisible ? 'visible' : 'exit'}
-        variants={pVariant2}
+        initial={{ opacity: 0, y: -50, scaleY: 0 }}
+        animate={titleVisible ? { opacity: 1, y: 0, scaleY: 1 } : 'exit'}
+        transition={BounceTransition2}
         className='text-center text-[17px] text-neutral-100 mb-10'
       >
         <span className='font-bold bg-gradient-to-tr from-slate-800 via-violet-500 to-zinc-100 bg-clip-text text-transparent'>
@@ -138,16 +154,17 @@ const AboutSection = () => {
         {cards.map((card, i) => (
           <motion.div
             key={i}
-            initial='hidden'
-            animate={cardsVisible ? 'visible' : 'exit'}
-            variants={cardVariants}
+            initial={{ opacity: 0, x: 50, scaleX: 0 }}
+            animate={cardsVisible ? { opacity: 1, x: 0, scaleX: 1 } : 'exit'}
+            transition={bounceTransition}
             className='bg-white w-64 min-h-[250px] flex flex-col p-6 rounded-md shadow-lg border border-transparent cursor-pointer transition-all duration-50 '
             whileHover={{
               scale: 1.02,
-              rotateZ: 0.2,
+
               backgroundColor: 'rgba(255,255,255,0.05)',
               boxShadow: '0 12px 24px rgba(0,0,0,0.1)',
               borderColor: '#d4d4d8',
+              transition: { duration: 0.3, ease: 'easeInOut' },
             }}
           >
             <div className='text-purple-600 flex items-center justify-center w-14 h-14 bg-white rounded-full shadow-md mx-auto mb-4'>
